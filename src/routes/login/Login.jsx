@@ -1,41 +1,41 @@
+import { useEffect, useState } from 'react';
+import { signIn } from '../../redux/slices/loginSlice';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useLoginInUserMutation } from '../../redux/api/login';
-import { useEffect } from 'react';
-import { signIn } from '../../redux/slices/loginSlice';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [loginInUserWithApi, { data, isSuccess }] = useLoginInUserMutation()
-    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
+    const dispatch = useDispatch();
    
-    const onFinish = (values) => {
-        loginInUserWithApi(values)
-    };
     useEffect(() => {
         if (isSuccess) {
             if (data?.access_token) { 
                 dispatch(signIn(data.access_token));
                 navigate("/") 
             } else {
-                console.error("Token not found in API response.");
+                console.error("Token not found?");
             }
         }
 
     }, [isSuccess, data, dispatch]);
 
+    const onFinish = (values) => {
+        loginInUserWithApi(values)
+    };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
-
     };
 
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+                <h2 className="text-2xl font-bold text-center mb-6 text-start">Login</h2>
 
                 <Form
                     name="basic"
@@ -49,7 +49,7 @@ const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your email!',
+                                message: 'Please input your Email!',
                             },
                         ]}
                     >
@@ -70,7 +70,9 @@ const Login = () => {
 
                     <Form.Item>
                         <Button type="primary" htmlType="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2 rounded-lg">
-                            Submit
+                            {
+                                loading ? "Loading..." : "Login"
+                            }
                         </Button>
                     </Form.Item>
                 </Form>

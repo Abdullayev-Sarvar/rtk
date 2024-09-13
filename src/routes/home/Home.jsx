@@ -26,7 +26,7 @@ const Products = () => {
 
   return (
     <Container>
-      <div className="bg-gray-100 min-h-screen p-8">
+      <div className="bg-gray-100 p-8">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Products</h1>
 
         <div className="w-full text-center mb-6">

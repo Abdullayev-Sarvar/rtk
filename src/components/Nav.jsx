@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Container from "../container/Container";
 
@@ -8,12 +7,12 @@ const Nav = () => {
       <div className="bg-black p-4 shadow-lg rounded-lg">
         <ul className="flex justify-between items-center space-x-8">
           <li className="hover:scale-110 transform transition duration-300">
-            <NavLink to="/" className="text-white text-lg font-semibold hover:text-yellow-400 transition-colors duration-300">
+            <NavLink to="/" className="text-white text-lg font-semibold hover: transition-colors duration-300">
               Products
             </NavLink>
           </li>
           <li className="hover:scale-110 transform transition duration-300">
-            <NavLink to="/login" className="text-white text-lg font-semibold hover:text-yellow-400 transition-colors duration-300">
+            <NavLink to="/login" className="text-white text-lg font-semibold hover: transition-colors duration-300">
               Login
             </NavLink>
           </li>
