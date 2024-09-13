@@ -10,15 +10,15 @@ const RoutesController = () => {
   return useRoutes([
     {
       path: '/',
-      element: <Suspense fallback={<div className='w-full max-w-[1366px] h-full mx-auto px-4 py-2'>Loading...</div>}><Home /></Suspense>
+      element: <Suspense fallback={<div className='w-full max-w-[1366px] h-full flex justify-center items-center mx-auto'><div className="loader"></div></div>}><Home /></Suspense>
     },
     {
       path: '/login',
-      element: <Suspense fallback={<div className='w-full max-w-[1366px] h-full mx-auto px-4 py-2'>Loading...</div>}><Login /></Suspense>
+      element: <Suspense fallback={<div className='w-full max-w-[1366px] h-full flex justify-center items-center mx-auto'><div className="loader"></div></div>}><Login /></Suspense>
     },
     {
       path: '/cart',
-      element: <Suspense fallback={<div className='w-full max-w-[1366px] h-full mx-auto px-4 py-2'>Loading...</div>}><Cart /></Suspense>
+      element: <Suspense fallback={<div className='w-full max-w-[1366px] h-full flex justify-center items-center mx-auto'><div className="loader"></div></div>}><Cart /></Suspense>
     }
   ])
 }
